@@ -136,11 +136,8 @@ class ItemsRepository(BaseRepository):  # noqa: WPS214
             query_params.append(title)
             query_params_count += 1
 
-            # fmt: off
-            # Get all items that contain the title parameter in their title
-            query = query.where(
-                items.title.ilike(f"%{title}%"),
-            )
+            query = query.where(items.title.lower().contains(title.lower()))
+
             # fmt: on
 
         if tag:
