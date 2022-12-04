@@ -1,9 +1,8 @@
 from typing import List, Optional
 
-from pydantic import BaseModel, Field
-
 from app.models.domain.items import Item
 from app.models.schemas.rwschema import RWSchema
+from pydantic import BaseModel, Field
 
 DEFAULT_ITEMS_LIMIT = 20
 DEFAULT_ITEMS_OFFSET = 0
@@ -37,6 +36,7 @@ class ListOfItemsInResponse(RWSchema):
 
 
 class ItemsFilters(BaseModel):
+    title: Optional[str] = None
     tag: Optional[str] = None
     seller: Optional[str] = None
     favorited: Optional[str] = None
